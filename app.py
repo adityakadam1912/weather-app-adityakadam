@@ -15,65 +15,126 @@ st.set_page_config(page_title='Weather App', page_icon='weather.png')
 
 #css section
 
+
+# CSS section
+
+# CSS section
 st.markdown(f"""
 <style>
-/* Full-screen blurred weather background */
+
+/* Full-screen background image */
 .stApp {{
     background:
         linear-gradient(
-            rgba(20, 35, 70, 0.18),
-            rgba(20, 35, 70, 0.18)
+            rgba(20, 35, 70, 0.15),
+            rgba(20, 35, 70, 0.15)
         ),
-        url("data:image/jpeg;base64,{bg_image}");
+        url("data:image/png;base64,{bg_image}");
 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    min-height: 100vh;
 }}
 
-/* Centered translucent glass card */
+/* Responsive glass container */
 [data-testid="stMainBlockContainer"] {{
-    background: rgba(255, 255, 255, 0.24);
+    background: rgba(255, 255, 255, 0.16);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
 
-    border: 1px solid rgba(255, 255, 255, 0.42);
+    border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: 18px;
     box-shadow: 0 8px 32px rgba(20, 30, 60, 0.12);
 
-    padding: 2rem;
-    margin-top: 2rem;
+    padding: clamp(1rem, 4vw, 2rem);
+    margin: 1rem auto;
+    width: 100%;
+    max-width: 850px;
+    box-sizing: border-box;
 }}
 
-/* Transparent Streamlit header */
+/* Transparent header */
 [data-testid="stHeader"] {{
     background: rgba(255, 255, 255, 0.08);
 }}
 
-/* Translucent city input */
+/* Responsive city input */
 .stTextInput input {{
     background: rgba(255, 255, 255, 0.30);
     border: 1px solid rgba(255, 255, 255, 0.55);
     border-radius: 9px;
+    width: 100%;
+    box-sizing: border-box;
 }}
 
-/* Glass-style button */
+/* Button */
 .stButton button {{
-    background: rgba(75, 125, 255, 0.88);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.55);
     border-radius: 10px;
+    max-width: 100%;
     transition: all 0.2s ease;
 }}
 
 .stButton button:hover {{
-    background: rgba(55, 105, 235, 0.98);
-    color: white;
-    border-color: white;
+    border-color: #3b82f6;
+    color: #3b82f6;
 }}
+
+/* Weather metrics */
+[data-testid="stMetric"] {{
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    border-radius: 12px;
+    padding: 12px;
+    overflow-wrap: anywhere;
+}}
+
+/* Phones and tablets */
+@media (max-width: 768px) {{
+    [data-testid="stMainBlockContainer"] {{
+        padding: 1rem;
+        margin: 0 auto;
+        max-width: 100%;
+        border-radius: 14px;
+    }}
+
+    [data-testid="stImage"] img {{
+        max-width: 110px;
+        width: 100%;
+        height: auto;
+    }}
+
+    h1 {{
+        font-size: clamp(1.5rem, 6vw, 2rem) !important;
+        overflow-wrap: anywhere;
+    }}
+
+    [data-testid="stMetricValue"] {{
+        font-size: 1.35rem;
+    }}
+}}
+
+/* Small phones */
+@media (max-width: 480px) {{
+    [data-testid="stMainBlockContainer"] {{
+        padding: 0.85rem;
+    }}
+
+    [data-testid="stMetric"] {{
+        padding: 8px;
+    }}
+
+    [data-testid="stMetricValue"] {{
+        font-size: 1.1rem;
+    }}
+}}
+
 </style>
 """, unsafe_allow_html=True)
+
 
 #css section
 
